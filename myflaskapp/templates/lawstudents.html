@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Law Students Page</title>
+    <style>
+        body {
+            background-image: url('\background.jpg');
+            background-color: #93d6ef;
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            padding: 20px 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            /*text-align: center;*/
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 40px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 15px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+        }
+
+        .marketing-text {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .problem-statement-form {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .problem-statement-form textarea {
+            flex: 1;
+            height: 150px;
+            padding: 20px;
+            margin-right: 10px;
+            border: 3px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .problem-statement-form button {
+            padding: 10px 20px;
+            background-color: #555;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .reenter-button {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="lawchallenges.html">Challenges</a></li>
+                <li><a href="#blogs">Blogs</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+                <li class="user-profile"><a href="#" style="text-align:right;">User Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <main>
+            <section id="home">
+                <h1>Welcome to Law Students Page</h1>
+                <p class="marketing-text">Learn, engage, and grow as a law student.</p>
+                <div class="problem-statement-form">
+                    <form id="problem-form" method="POST" action="/process">
+                        <textarea name="problem" id="problem" placeholder="Enter your problem statement here"></textarea><br><br>
+                        <button type="submit">Submit</button>
+                        <button type="button" class="reenter-button">Reenter</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result</title>
+</head>
+<body>
+    <h1>Suggested IPC Sections:</h1>
+    <table border="1">
+        <tr>
+            <th>Section</th>
+            <th>Offense</th>
+            <th>Punishment</th>
+        </tr>
+        {% for section in sections %}
+        <tr>
+            <td>{{ section['Section'] }}</td>
+            <td>{{ section['Offense'] }}</td>
+            <td>{{ section['Punishment'] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
