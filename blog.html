@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Page</title>
+    <style>
+        /* Your CSS styles here */
+        /* Add styling for the active link */
+        nav ul li a.active {
+            background-color: #555;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        body {
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            padding: 20px 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            /*text-align: center;*/
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 40px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 15px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+
+        .article {
+            position: relative; /* Added */
+            width: calc(33.33% - 1px);
+            margin-bottom: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 40px;
+            box-sizing: border-box;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .article:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .article h2 {
+            color: #007bff;
+            cursor: pointer; /* Change cursor to indicate clickable */
+        }
+
+        .delete-button { /* Added */
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ff0000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+    .container {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        grid-template-columns: 1fr; /* 1 column on even smaller screens */
+    }
+}
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="login.html">Home</a></li>
+                <li><a href="blog.html">Blogs</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container" id="blog-container">
+
+        <!-- Existing Blog Previews Go Here -->
+        </div><div class="container" id="blog-container">
+            <!-- First Row -->
+            <div class="article">
+                <h2><a href="https://www.example.com/blog1" target="_blank">Blog Title 1</a></h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis libero id leo volutpat, vitae sollicitudin nunc tincidunt.</p>
+            </div>
+        
+            <div class="article">
+                <h2><a href="https://www.example.com/blog2" target="_blank">Blog Title 2</a></h2>
+                <p>Phasellus sit amet turpis eget felis bibendum mattis. Ut sit amet convallis lorem, vel cursus nunc.</p>
+            </div>
+        
+            <div class="article">
+                <h2><a href="https://www.example.com/blog3" target="_blank">Blog Title 3</a></h2>
+                <p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nunc vel metus at est faucibus placerat.</p>
+            </div>
+        
+            <!-- Second Row -->
+            <div class="article">
+                <h2><a href="https://www.example.com/blog4" target="_blank">Blog Title 4</a></h2>
+                <p>Integer fermentum, tortor at aliquet tincidunt, sapien erat varius urna, sit amet venenatis eros erat a elit.</p>
+            </div>
+        
+            <div class="article">
+                <h2><a href="https://www.example.com/blog5" target="_blank">Blog Title 5</a></h2>
+                <p>Donec pretium condimentum dolor, non luctus arcu mattis in. Nam fermentum auctor eros at fermentum.</p>
+            </div>
+        
+            <div class="article">
+                <h2><a href="https://www.example.com/blog6" target="_blank">Blog Title 6</a></h2>
+                <p>Etiam vitae orci et purus tristique convallis. Sed elementum nec est vel placerat.</p>
+            </div>
+        
+            <!-- Third Row -->
+            <div class="article">
+                <h2><a href="https://www.example.com/blog7" target="_blank">Blog Title 7</a></h2>
+                <p>Mauris id enim et tellus fringilla accumsan ut nec ipsum. Proin ut dolor ac purus malesuada ultrices.</p>
+            </div>
+        
+            <div class="article">
+                <h2><a href="https://www.example.com/blog8" target="_blank">Blog Title 8</a></h2>
+                <p>Curabitur pulvinar erat nec justo rutrum, nec consequat felis viverra. Phasellus scelerisque tellus ut suscipit placerat.</p>
+            </div>
+            <div class="article">
+                <h2><a href="https://www.example.com/blog8" target="_blank">Blog Title 9</a></h2>
+                <p>Curabitur pulvinar erat nec justo rutrum, nec consequat felis viverra. Phasellus scelerisque tellus ut suscipit placerat.</p>
+            </div>
+        
+            <!-- Add more articles here if needed -->
+        </div>
+        
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Retrieve existing blogs from localStorage
+            var existingBlogs = JSON.parse(localStorage.getItem('blogs')) || [];
+
+            // Function to render existing blog previews
+            function renderExistingBlogPreviews() {
+                var blogContainer = document.getElementById('blog-container');
+                blogContainer.innerHTML = ''; // Clear existing content
+                existingBlogs.forEach(function(blog, index) {
+                    var article = document.createElement('div');
+                    article.classList.add('article');
+                    // Add fetchContent function to fetch additional content from the URL
+                    fetchContent(blog.url).then(function(content) {
+                        // Extract relevant information (e.g., text or images) from the fetched content
+                        // For demonstration purposes, let's assume the content is a string and extract the first 100 characters
+                        var previewText = content.substring(0, 100);
+                        var articleHTML = `
+                            <h2 data-index="${index}"><a href="${blog.url}" target="_blank">${blog.title}</a></h2>
+                            <p>${previewText}</p>
+                            <button class="delete-button" data-index="${index}">Delete</button>
+                        `;
+                        article.innerHTML = articleHTML;
+                        blogContainer.appendChild(article);
+                    }).catch(function(error) {
+                        console.error('Error fetching content:', error);
+                    });
+                });
+            }
+
+            // Render existing blog previews on page load
+            renderExistingBlogPreviews();
+
+            // Handle click on delete button
+            document.addEventListener('click', function(event) {
+                if (event.target.classList.contains('delete-button')) {
+                    var index = event.target.dataset.index;
+                    // Remove the blog from existingBlogs array
+                    existingBlogs.splice(index, 1);
+                    // Update localStorage
+                    localStorage.setItem('blogs', JSON.stringify(existingBlogs));
+                    // Re-render the blog previews
+                    renderExistingBlogPreviews();
+                }
+            });
+
+            // Function to fetch content from the provided URL
+            function fetchContent(url) {
+                // This function should be implemented on the server-side to fetch data from the URL
+                // For demonstration purposes, let's assume it returns a Promise that resolves with some content
+                return new Promise(function(resolve, reject) {
+                    // Replace this with your server-side URL fetching logic
+                    // For example:
+                    // fetch(url)
+                    //     .then(function(response) {
+                    //         if (!response.ok) {
+                    //             throw new Error('Network response was not ok');
+                    //         }
+                    //         return response.text();
+                    //     })
+                    //     .then(function(content) {
+                    //         resolve(content);
+                    //     })
+                    //     .catch(function(error) {
+                    //         reject(error);
+                    //     });
+
+                    // For demonstration purposes, return a sample content after a short delay
+                    setTimeout(function() {
+                        resolve('Sample content fetched from ' + url);
+                    }, 1000);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+/* Full-page background image */
+body {
+    background-image: url('bg1.jpg'); /* Replace with your background image URL */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; /* Ensure full viewport height */
+    overflow: hidden; /* Hide any overflow content */
+}
+
+.navbar {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+#userTypeSelect {
+    margin-right: 10px;
+}
+
+.quote-container {
+    background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent background color */
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+.quiz-container {
+    margin-top: 220px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.options button {
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.options button:hover {
+    background-color: #555;
+}
+
+.options button.correct {
+    background-color: #4caf50; /* Green for correct answer */
+}
+
+.options button.incorrect {
+    background-color: #f44336; /* Red for incorrect answer */
+}
+
+#result {
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.quote {
+    animation: colorChange 5s infinite;
+  }
+  
+  .author {
+    animation: glitter 2s infinite;
+  }
+  
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes colorChange {
+    0%, 100% {
+      color: #fff;
+    }
+    25% {
+      color: #ff6347;
+    }
+    50% {
+      color: #3cb371;
+    }
+    75% {
+      color: #8a2be2;
+    }
+  }
+  
+  @keyframes glitter {
+    0% {
+      text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+    }
+    50% {
+      text-shadow: 0 0 20px rgba(255, 215, 0, 0.9);
+    }
+    100% {
+      text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+    }
+  }

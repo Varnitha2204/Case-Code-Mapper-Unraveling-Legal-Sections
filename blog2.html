@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Page</title>
+    <style>
+        /* Your CSS styles here */
+        /* Add styling for the active link */
+        nav ul li a.active {
+            background-color: #555;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        body {
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            padding: 20px 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 40px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 15px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .article {
+            position: relative; /* Added */
+            width: calc(33.33% - 20px);
+            margin-bottom: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            box-sizing: border-box;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .article:hover {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .article h2 {
+            color: #007bff;
+            cursor: pointer; /* Change cursor to indicate clickable */
+        }
+
+        .delete-button { /* Added */
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ff0000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .add-blog-form {
+            width: 100%;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .add-blog-form input[type="text"],
+        .add-blog-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .add-blog-form input[type="submit"] {
+            background-color: #555;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        .add-blog-form input[type="submit"]:hover {
+            background-color: #444;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="legal.html">Home</a></li>
+                <li><a href="legalchallenges.html">Challenges</a></li>
+                <li><a href="blog2.html">Blogs</a></li>
+                <li><a href="contact2.html">Contact Us</a></li>
+                <li class="user-profile"><a href="profile.html" style="text-align:right;">User Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container" id="blog-container">
+        <!-- Existing Blog Previews Go Here -->
+    </div>
+    <!-- Form to add a new blog -->
+    <div class="add-blog-form">
+        <h2>Add New Blog</h2>
+        <form id="add-blog-form">
+            <input type="text" id="blog-title" placeholder="Blog Title" required><br>
+            <input type="text" id="blog-url" placeholder="Blog URL"><br>
+            <input type="file" id="blog-image" accept="image/*">
+            <input type="file" id="blog-video" accept="video/*">
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Retrieve existing blogs from localStorage
+            var existingBlogs = JSON.parse(localStorage.getItem('blogs')) || [];
+
+            // Function to render existing blog previews
+            function renderExistingBlogPreviews() {
+                var blogContainer = document.getElementById('blog-container');
+                blogContainer.innerHTML = ''; // Clear existing content
+                existingBlogs.forEach(function(blog, index) {
+                    var article = document.createElement('div');
+                    article.classList.add('article');
+                    // Add fetchContent function to fetch additional content from the URL
+                    fetchContent(blog.url).then(function(content) {
+                        // Extract relevant information (e.g., text or images) from the fetched content
+                        // For demonstration purposes, let's assume the content is a string and extract the first 100 characters
+                        var previewText = content.substring(0, 100);
+                        var articleHTML = `
+                            <h2 data-index="${index}"><a href="${blog.url}" target="_blank">${blog.title}</a></h2>
+                            <p>${previewText}</p>
+                            <button class="delete-button" data-index="${index}">Delete</button>
+                        `;
+                        article.innerHTML = articleHTML;
+                        blogContainer.appendChild(article);
+                    }).catch(function(error) {
+                        console.error('Error fetching content:', error);
+                    });
+                });
+            }
+
+            // Render existing blog previews on page load
+            renderExistingBlogPreviews();
+
+            // Handle form submission
+            document.getElementById('add-blog-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+
+                // Get input values
+                var title = document.getElementById('blog-title').value;
+                var url = document.getElementById('blog-url').value;
+                var image = document.getElementById('blog-image').files[0];
+                var video = document.getElementById('blog-video').files[0];
+
+                // Function to read file as data URL
+                function readFileAsDataURL(file, callback) {
+                    var reader = new FileReader();
+                    reader.onload = function(event) {
+                        callback(event.target.result);
+                    };
+                    reader.readAsDataURL(file);
+                }
+
+                // Add the new blog to the existing blogs array
+                var newBlog = { title: title, url: url };
+                if (image) {
+                    readFileAsDataURL(image, function(imageDataUrl) {
+                        newBlog.image = imageDataUrl;
+                        if (video) {
+                            readFileAsDataURL(video, function(videoDataUrl) {
+                                newBlog.video = videoDataUrl;
+                                saveBlog(newBlog);
+                            });
+                        } else {
+                            saveBlog(newBlog);
+                        }
+                    });
+                } else if (video) {
+                    readFileAsDataURL(video, function(videoDataUrl) {
+                        newBlog.video = videoDataUrl;
+                        saveBlog(newBlog);
+                    });
+                } else {
+                    saveBlog(newBlog);
+                }
+            });
+
+            // Function to save blog to localStorage and render blog previews
+            function saveBlog(blog) {
+                existingBlogs.push(blog);
+                localStorage.setItem('blogs', JSON.stringify(existingBlogs));
+                renderExistingBlogPreviews();
+                // Clear form inputs
+                document.getElementById('blog-title').value = '';
+                document.getElementById('blog-url').value = '';
+                document.getElementById('blog-image').value = '';
+                document.getElementById('blog-video').value = '';
+            }
+
+            // Handle click on delete button
+            document.addEventListener('click', function(event) {
+                if (event.target.classList.contains('delete-button')) {
+                    var index = event.target.dataset.index;
+                    // Remove the blog from existingBlogs array
+                    existingBlogs.splice(index, 1);
+                    // Update localStorage
+                    localStorage.setItem('blogs', JSON.stringify(existingBlogs));
+                    // Re-render the blog previews
+                    renderExistingBlogPreviews();
+                }
+            });
+
+            // Function to fetch content from the provided URL
+            function fetchContent(url) {
+                // This function should be implemented on the server-side to fetch data from the URL
+                // For demonstration purposes, let's assume it returns a Promise that resolves with some content
+                return new Promise(function(resolve, reject) {
+                    // Replace this with your server-side URL fetching logic
+                    // For example:
+                    // fetch(url)
+                    //     .then(function(response) {
+                    //         if (!response.ok) {
+                    //             throw new Error('Network response was not ok');
+                    //         }
+                    //         return response.text();
+                    //     })
+                    //     .then(function(content) {
+                    //         resolve(content);
+                    //     })
+                    //     .catch(function(error) {
+                    //         reject(error);
+                    //     });
+
+                    // For demonstration purposes, return a sample content after a short delay
+                    setTimeout(function() {
+                        resolve('Sample content fetched from ' + url);
+                    }, 1000);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

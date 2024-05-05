@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Law Students Page</title>
+    <style>
+        /* Your existing CSS styles */
+        /* Add styling for the active link */
+        nav ul li a.active {
+            background-color: #555;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        body {
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            padding: 20px 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            /*text-align: center;*/
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 40px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 15px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Add styles for the Contact Us section */
+        .contact-section {
+            margin-top: 50px; /* Add some space between previous section and contact section */
+        }
+
+        .contact-info {
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .social-icons {
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .social-icons img {
+            width: 40px; /* Adjust the size of the icons */
+            height: auto;
+        }
+    </style>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="public.html">Home</a></li>
+                <li><a href="publicchallenges.html">Challenges</a></li>
+                <li><a href="blog3.html">Blogs</a></li>
+                <li><a href="contact3.html">Contact Us</a></li> <!-- Add anchor link -->
+                <li class="user-profile"><a href="profile.html" style="text-align:right;">User Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <!-- Your existing content -->
+
+        <!-- Contact Us section -->
+        <section id="contact" class="contact-section">
+            <div class="contact-info">
+                <h2>Contact Us</h2>
+                <p>For inquiries or assistance, please contact us:</p>
+                <p>Email: example@example.com</p>
+                <p>Phone: 123-456-7890</p>
+                <!-- Add any other contact information here -->
+            </div>
+            <div class="social-icons">
+                <a href="https://www.facebook.com"><img src="facebook-icon.png" alt="Facebook"></a>
+                <a href="https://www.instagram.com"><img src="instagram-icon.png" alt="Instagram"></a>
+                <a href="https://t.me"><img src="telegram-icon.png" alt="Telegram"></a>
+                <a href="https://twitter.com"><img src="twitter-icon.png" alt="Twitter"></a>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Law Students Page</title>
+    <style>
+        /* Your existing CSS styles */
+        /* Add styling for the active link */
+nav ul li a.active {
+    background-color: #555;
+    color: #fff;
+    border-radius: 5px;
+}
+body {
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            padding: 20px 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            /*text-align: center;*/
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 40px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 15px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .challenges-section {
+            padding: 20px;
+        }
+        .challenge-item {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+        .challenge-item h2 {
+            margin-top: 0;
+        }
+        .challenge-item p {
+            margin-bottom: 10px;
+        }
+        .challenge-item img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+        .add-challenge-form {
+            margin-top: 20px;
+        }
+        .add-challenge-form input[type="text"],
+        .add-challenge-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .add-challenge-form input[type="submit"] {
+            background-color: #555;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .add-challenge-form input[type="submit"]:hover {
+            background-color: #444;
+        }
+    </style>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="legal.html">Home</a></li>
+                <li><a href="legalchallenges.html">Challenges</a></li>
+                <li><a href="blog2.html">Blogs</a></li>
+                <li><a href="contact2.html">Contact Us</a></li>
+                <li class="user-profile"><a href="profile.html" style="text-align:right;">User Profile</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <section class="challenges-section">
+            <h2>Challenges</h2>
+            <!-- List of challenges -->
+            <div class="challenge-item">
+                <h2>Challenge Title</h2>
+                <p>Description of the challenge...</p>
+                <img src="challenge-image.jpg" alt="Challenge Image">
+                <p>Video: <a href="#">Watch Video</a></p>
+            </div>
+            <!-- Add challenge form -->
+            <div class="add-challenge-form">
+                <h3>Add New Challenge</h3>
+                <form id="add-challenge-form" method="POST">
+                    <input type="text" name="title" placeholder="Title" required><br>
+                    <textarea name="description" placeholder="Description" rows="4" required></textarea><br>
+                    <input type="url" name="video" placeholder="Video URL"><br><br>
+                    <input type="file" name="image" accept="image/*"><br><br>
+                    <input type="submit" value="Add Challenge">
+                </form>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

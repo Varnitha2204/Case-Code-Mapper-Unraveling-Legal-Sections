@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constitutional Ideology</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-left">
+            <a href="login.html">Home</a>
+            <a href="blog.html">Blogs</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+        <div class="navbar-right">
+            <label for="userType">Register As:</label>
+            <select id="userTypeSelect" name="userType">
+                <option value="public">Public Citizen</option>
+                <option value="professional">Legal Professional</option>
+                <option value="student">Law Student</option>
+            </select>
+            <button onclick="redirectToLogin()">Login</button>
+        </div>
+    </nav>
+
+    <!--<div class="bg-container">
+        <div class="quote-container">
+            <p>Best Constitutional Quotations and Unique Ideology</p>
+        </div>
+    </div>-->
+    <div class="quote-container" style="text-align: center; margin-top: 50px;">
+        <p class="quote" style="font-size: 24px; color: #fff; font-style: italic;">"The Constitution only gives people the right to pursue happiness. You have to catch it yourself."</p>
+        <p class="author" style="font-size: 18px; color: #fff; margin-top: 10px;">- Benjamin Franklin</p>
+    </div>
+    
+
+    <main>
+        <div class="quiz-container">
+            <h1>Test Your Knowledge</h1>
+            <p>Which article of the constitution deals with <strong>Freedom of Speech and Expression</strong>?</p>
+            <div class="options">
+                <button onclick="checkAnswer('A')">Article 19</button>
+                <button onclick="checkAnswer('B')">Article 21</button>
+                <button onclick="checkAnswer('C')">Article 32</button>
+                <button onclick="checkAnswer('D')">Article 15</button>
+            </div>
+            <div id="result"></div>
+        </div>
+    </main>
+
+    <script>
+        function redirectToLogin() {
+            var userType = document.getElementById('userTypeSelect').value;
+            var loginUrl;
+
+            switch (userType) {
+                case 'professional':
+                    loginUrl = 'index1.php'; // Replace with your professional login page
+                    break;
+                case 'student':
+                    loginUrl = 'index.php'; // Law student login page (assuming it's named 'lawstudents.html')
+                    break;
+                default:
+                    loginUrl = 'index2.php'; // Replace with your public login page
+                    break;
+            }
+
+            window.location.href = loginUrl;
+        }
+
+        function checkAnswer(selectedOption) {
+            var correctAnswer = 'A'; // Assuming correct answer is 'A' (Article 19)
+
+            if (selectedOption === correctAnswer) {
+                document.getElementById('result').innerHTML = '<span style="color: green;">Correct!</span>';
+            } else {
+                document.getElementById('result').innerHTML = '<span style="color: red;">Incorrect!</span>';
+            }
+        }
+    </script>
+</body>
+</html>

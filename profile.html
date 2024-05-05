@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            background-image: url('bg1.jpg');
+        }
+        .profile-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+        .profile-icon {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #ccc;
+            margin-bottom: 20px;
+        }
+        .profile-name {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .profile-description {
+            margin-bottom: 20px;
+        }
+        .challenges-section {
+            margin-bottom: 20px;
+        }
+        .logout-btn {
+            background-color: #f44336;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <div class="profile-icon"></div>
+        <div class="profile-name">John Doe</div>
+        <div class="profile-description">
+            <p>This is a brief description about me. I am passionate about coding and learning new technologies.</p>
+        </div>
+        <div class="challenges-section">
+            <h2>Challenges Participated</h2>
+            <ul>
+                <li>Challenge 1</li>
+                <li>Challenge 2</li>
+                <li>Challenge 3</li>
+            </ul>
+        </div>
+        <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+
+    <script>
+        function logout() {
+            // Perform logout logic here
+            alert('You have been logged out.');
+            // Redirect to logout page or perform other logout actions
+            window.location.href = 'logout.html'; 
+        }
+    </script>
+</body>
+</html>
